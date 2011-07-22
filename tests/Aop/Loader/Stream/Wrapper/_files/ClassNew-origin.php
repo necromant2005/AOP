@@ -1,4 +1,5 @@
 <?php
 
-$value = (!$objectA = new A(123)) ? null : $objectA->foo('text');
+$objectA = new A(123);
+$value = $objectA->foo('text');
 
