@@ -1,0 +1,37 @@
+=AOP/Loader=
+
+Some syntax sugar for PHP
+
+=USE CASE=
+
+Asserts:
+```
+Class A 
+{
+    public function foo(string $str, integer $amount)
+    {
+
+    }
+}
+```
+will be translated to 
+```
+Class A 
+{
+    public function foo($str, $amount)
+    {
+        if (!is_string($content)) throw new \ArgumentError('Argument 0 passed to foo() must be a string');
+        if (!is_integer($content)) throw new \ArgumentError('Argument 1 passed to foo() must be a integer');
+    }
+}
+```
+
+ClassNew SyntaxSugar
+```
+$x = A.new('test')->foo();
+```
+will be 
+```
+$objectA = new A('test');
+$x = $objectA->foo();
+```
